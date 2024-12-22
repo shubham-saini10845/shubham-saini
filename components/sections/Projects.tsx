@@ -3,8 +3,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
-import { Button } from "@/components/ui/button";
+
 
 const projects = [
   {
@@ -58,18 +57,18 @@ export default function Projects() {
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
                 viewport={{ once: true }}
               >
                 <Card className="h-full hover:shadow-lg transition-all duration-300 group">
                   <CardHeader>
                     <CardTitle className="flex items-center justify-between">
                       <span>{project.title}</span>
-                      <div className="flex gap-2">
+                      {/* <div className="flex gap-2">
                         <Button variant="ghost" size="icon" className="opacity-0 group-hover:opacity-100 transition-opacity">
                           <ExternalLink className="h-4 w-4" />
                         </Button>
-                      </div>
+                      </div> */}
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">

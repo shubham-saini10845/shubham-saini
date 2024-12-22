@@ -7,7 +7,7 @@ import { Toaster } from "../ui/toaster";
 
 export default function Contact() {
   return (
-    <section className="py-16 sm:py-24" id="contact">
+    <section className="py-16 sm:py-24" id="contact-me-section">
       <div className=" px-4 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

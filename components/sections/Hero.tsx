@@ -27,10 +27,11 @@ const itemVariants = {
 };
 
 const gradientTextStyle = "bg-gradient-to-r from-primary to-purple-600 dark:from-blue-400 dark:to-purple-400 text-transparent bg-clip-text";
-export const  GIT_HUB='https://github.com/shub86'
+export const  GIT_HUB='https://github.com/shubham-saini10845'
 export default function Hero() {
 
   const scrollToView=(type:'scroll'|'Git')=>{
+    
     switch (type) {
       case 'scroll':
         const element=document.getElementById('contact-me-section');
@@ -38,6 +39,7 @@ export default function Hero() {
         break;
       case 'Git':
         window.open(GIT_HUB,'_blank')
+        break;
       default:
         break;
     }
@@ -104,7 +106,7 @@ export default function Hero() {
                   <span>LinkedIn</span>
                 </a>
               </Button>
-              <Button variant="outline" className="gap-2 group" onClick={()=>scrollToView('scroll')}>
+              <Button variant="outline" className="gap-2 group" onClick={()=>scrollToView('Git')}>
                 <Github className="h-4 w-4 group-hover:scale-110 transition-transform" />
                 <span>GitHub</span>
               </Button>

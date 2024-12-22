@@ -47,7 +47,7 @@ export default function ContactInfo() {
       icon: <Github className="h-4 w-4" />,
       label: "GitHub",
       value: "GitHub Profile",
-      link: "https://github.com/shub86"
+      link: "https://github.com/shubham-saini10845"
     }
   ];
 
@@ -62,7 +62,7 @@ export default function ContactInfo() {
   };
 
   return (
-    <Card className="h-full">
+    <Card className="h-full max-w-sm  sm:max-w-full ">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Mail className="h-5 w-5 text-primary" />
@@ -76,7 +76,7 @@ export default function ContactInfo() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
-            className="group relative flex items-center gap-3 p-3 rounded-lg hover:bg-muted/50 transition-colors"
+            className="group relative break-all flex items-center gap-3 p-3 rounded-lg hover:bg-muted/50 transition-colors"
           >
             <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary">
               {detail.icon}

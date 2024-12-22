@@ -28,7 +28,7 @@ export default function Experience() {
           </div>
 
           <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-primary/20 rounded-full" />
+            <div className="absolute left-[3%] md:left-1/2 transform -translate-x-1/2 h-full w-1 bg-primary/20 rounded-full" />
             
             <motion.div
               initial={{ opacity: 0, x: -100 }}

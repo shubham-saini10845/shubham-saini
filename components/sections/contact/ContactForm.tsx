@@ -65,7 +65,7 @@ export default function ContactForm() {
   };
 
   return (
-    <Card className="h-full">
+    <Card className="h-full  max-w-sm  sm:max-w-full">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Send className="h-5 w-5 text-primary" />
