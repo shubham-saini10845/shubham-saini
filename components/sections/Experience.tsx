@@ -6,8 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { BriefcaseIcon, CheckCircle2 } from "lucide-react";
 
 const skills = {
-  clientSide: ["HTML", "CSS", "JS", "React", "Redux", "NextJs", "TypeScript", "Bootstrap", "Material UI", "Ant Design", "ES-Lint", "JQuery","Chrome Extension",],
-  serverSide: ["Express", "Postgres", "AWS EC2", "MySQL", "NodeJS", "HTTP/2","Supabase",'Hono'],
+  clientSide: ["HTML", "CSS", "JS", "React", "Angular 17", "Redux", "NextJs", "TypeScript", "Bootstrap", "Material UI", "Ant Design", "ES-Lint", "JQuery", "Chrome Extension", "PrimeNG", "BPMN.js", "Tailwind CSS", "Tailwind CSS"],
+  serverSide: ["Express", "Postgres", "AWS EC2", "MySQL", "NodeJS", "HTTP/2", "Supabase", 'Hono', "AWS S3", "Stripe",],
   devOps: ["Scrum", "Agile", "GIT"]
 };
 
@@ -42,7 +42,7 @@ export default function Experience() {
                   <BriefcaseIcon className="h-5 w-5 text-primary" />
                   <h3 className="font-semibold text-xl">Full Stack Developer</h3>
                 </div>
-                <p className="text-muted-foreground">Cloud Analogy, Kurukshetra, HR</p>
+                <p className="text-muted-foreground">Cloud Analogy, Noida, UP</p>
                 <p className="text-sm text-primary font-medium">2020 - Present</p>
               </div>
               
@@ -54,19 +54,22 @@ export default function Experience() {
                   <ul className="space-y-3 text-muted-foreground">
                     <li className="flex gap-2">
                       <span>•</span>
-                      <span>Started career as a fresher and successfully transitioned into a versatile full-stack developer role within the first year.</span>
+                      <span> Joined CloudAnalogy as a fresher and quickly evolved into a full-stack developer within
+                        the first year by taking on diverse frontend and backend responsibilities.</span>
                     </li>
                     <li className="flex gap-2">
                       <span>•</span>
-                      <span>Contributed to the development and deployment of 3+ web applications and 3+ Chrome extensions.</span>
+                      <span>Contributed to the development and deployment of 4+ web applications and 3+ Chrome extensions.</span>
                     </li>
                     <li className="flex gap-2">
                       <span>•</span>
-                      <span>Streamlined workflows and optimized codebases, resulting in a 20% improvement in application performance.</span>
+                      <span>Streamlined workflows and optimized codebases, resulting in a 20% improvement in
+                        application performance.</span>
                     </li>
                     <li className="flex gap-2">
                       <span>•</span>
-                      <span>Continuously upskilled in modern frameworks and tools, earning recognition for adaptability.</span>
+                      <span>Continuously upskilled in modern frameworks and tools, earning recognition for
+                        adaptability and commitment to excellence.</span>
                     </li>
                   </ul>
                 </CardContent>
