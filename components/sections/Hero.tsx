@@ -125,7 +125,7 @@ export default function Hero() {
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-purple-600/20 rounded-full blur-3xl" />
             <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-primary/20 shadow-xl">
               <Image
-                src="/images/profile.jpg"
+                src="/images/profile.png"
                 alt="Shubham Saini"
                 fill
                 className="object-cover"

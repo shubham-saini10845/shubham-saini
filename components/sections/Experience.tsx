@@ -6,8 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { BriefcaseIcon, CheckCircle2 } from "lucide-react";
 
 const skills = {
-  clientSide: ["HTML", "CSS", "JS", "React", "Angular 17", "Redux", "NextJs", "TypeScript", "Bootstrap", "Material UI", "Ant Design", "ES-Lint", "JQuery", "Chrome Extension", "PrimeNG", "BPMN.js", "Tailwind CSS", "Tailwind CSS"],
-  serverSide: ["Express", "Postgres", "AWS EC2", "MySQL", "NodeJS", "HTTP/2", "Supabase", 'Hono', "AWS S3", "Stripe",],
+  clientSide: ["HTML", "CSS", "JS", "React", "Angular 17", "Redux", "NextJs", "TypeScript", "Bootstrap", "Material UI", "Ant Design", "ES-Lint", "JQuery", "Chrome Extension", "PrimeNG", "BPMN.js", "Tailwind CSS", "ShadCN/Ui"],
+  serverSide: ["Express", "Postgres", "AWS EC2", "MySQL", "NodeJS", "HTTP/2", "Mongo", 'Hono', "AWS S3", "Stripe","Sequelize"],
   devOps: ["Scrum", "Agile", "GIT"]
 };
 
