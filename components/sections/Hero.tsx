@@ -88,7 +88,7 @@ export default function Hero() {
               variants={itemVariants}
               className="max-w-[700px] text-muted-foreground md:text-lg dark:text-gray-400 leading-relaxed"
             >
-              Full Stack Developer with 4.6 years of experience in front-end and back-end development.
+              Full Stack Developer with 4.11 years of experience in front-end and back-end development.
               Proficient in building, maintaining, and deploying scalable web applications.
             </motion.p>
 
