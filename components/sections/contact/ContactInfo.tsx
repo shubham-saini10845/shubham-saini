@@ -29,7 +29,7 @@ export default function ContactInfo() {
     {
       icon: <Mail className="h-4 w-4" />,
       label: "Email",
-      value: "shubham.saini10845@gmail.com",
+      value: "shub10845@gmail.com",
       copyable: true
     },
     {
