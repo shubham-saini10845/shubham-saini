@@ -1,132 +1,91 @@
 "use client";
 
-import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { Badge } from "@/components/ui/badge";
-import { BriefcaseIcon, CheckCircle2 } from "lucide-react";
-
-const skills = {
-  clientSide: ["HTML", "CSS", "JS", "React", "Angular 17", "Redux", "NextJs", "TypeScript", "Bootstrap", "Material UI", "Ant Design", "ES-Lint", "JQuery", "Chrome Extension", "PrimeNG", "BPMN.js", "Tailwind CSS", "ShadCN/Ui"],
-  serverSide: ["Express", "Postgres", "AWS EC2", "MySQL", "NodeJS", "HTTP/2", "Mongo", 'Hono', "AWS S3", "Stripe","Sequelize"],
-  devOps: ["Scrum", "Agile", "GIT"]
-};
+import { Section, SectionHeading } from "@/components/layout/Section";
+import { experience } from "@/lib/site";
 
 export default function Experience() {
   return (
-    <section className="py-16 sm:py-24 bg-muted/50">
-      <div className="px-4 md:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="space-y-8"
-        >
-          <div className="text-center space-y-2">
-            <h2 className="text-3xl font-bold tracking-tighter">Experience</h2>
-            <p className="text-muted-foreground">My professional journey</p>
+    <Section id="experience" className="bg-muted/40">
+      <SectionHeading
+        index="02"
+        eyebrow="Experience"
+        title="Fresher to Lead."
+        description="Cloud Analogy, 2020 to now — promoted from Assistant to Lead Full Stack in January 2026."
+      />
+
+      <motion.article
+        initial={{ opacity: 0, y: 18 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.45 }}
+        className="overflow-hidden rounded-3xl border border-border bg-card"
+      >
+        <ol className="grid grid-cols-2 border-b border-border sm:grid-cols-4">
+          {experience.journey.map((step, index) => (
+            <li
+              key={step.title}
+              className="relative border-border px-4 py-4 sm:px-6 sm:py-5 sm:border-r sm:last:border-r-0 [&:nth-child(odd)]:border-r max-sm:[&:nth-child(-n+2)]:border-b"
+            >
+              <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
+                {String(index + 1).padStart(2, "0")}
+                {step.period ? ` · ${step.period}` : ""}
+              </p>
+              <p className="mt-1 font-display text-sm font-semibold sm:text-base">
+                {step.title}
+              </p>
+            </li>
+          ))}
+        </ol>
+
+        <div className="grid gap-0 lg:grid-cols-[minmax(0,280px)_1fr]">
+          <div className="border-b border-border p-6 sm:p-8 lg:border-b-0 lg:border-r">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-primary">
+              {experience.period}
+            </p>
+            <h3 className="mt-4 font-display text-2xl font-semibold">
+              {experience.role}
+            </h3>
+            <p className="mt-2 text-foreground">{experience.company}</p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              {experience.location} · {experience.tenure}
+            </p>
+
+            <ul className="mt-6 space-y-3">
+              {experience.roles.map((role) => (
+                <li key={role.title}>
+                  <p className="text-sm font-medium">
+                    {role.title}
+                    {role.current ? (
+                      <span className="ml-2 rounded-full bg-primary/15 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-primary">
+                        Now
+                      </span>
+                    ) : null}
+                  </p>
+                  <p className="text-xs text-muted-foreground">{role.period}</p>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          <div className="relative">
-            <div className="absolute left-[3%] md:left-1/2 transform -translate-x-1/2 h-full w-1 bg-primary/20 rounded-full" />
-            
-            <motion.div
-              initial={{ opacity: 0, x: -100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="relative pl-8 md:pl-0 md:grid md:grid-cols-2 md:gap-12 md:items-center mb-12"
-            >
-              <div className="md:text-right space-y-2">
-                <div className="flex items-center md:justify-end gap-2">
-                  <BriefcaseIcon className="h-5 w-5 text-primary" />
-                  <h3 className="font-semibold text-xl">Full Stack Developer</h3>
-                </div>
-                <p className="text-muted-foreground">Cloud Analogy, Noida, UP</p>
-                <p className="text-sm text-primary font-medium">2020 - Present</p>
-              </div>
-              
-              <Card className="relative mt-4 md:mt-0">
-                <div className="absolute -left-[44px] top-1/2 -translate-y-1/2 w-10 h-10 bg-primary rounded-full flex items-center justify-center shadow-lg">
-                  <CheckCircle2 className="h-5 w-5 text-white" />
-                </div>
-                <CardContent className="p-6">
-                  <ul className="space-y-3 text-muted-foreground">
-                    <li className="flex gap-2">
-                      <span>•</span>
-                      <span> Joined CloudAnalogy as a fresher and quickly evolved into a full-stack developer within
-                        the first year by taking on diverse frontend and backend responsibilities.</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span>•</span>
-                      <span>Contributed to the development and deployment of 4+ web applications and 3+ Chrome extensions.</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span>•</span>
-                      <span>Streamlined workflows and optimized codebases, resulting in a 20% improvement in
-                        application performance.</span>
-                    </li>
-                    <li className="flex gap-2">
-                      <span>•</span>
-                      <span>Continuously upskilled in modern frameworks and tools, earning recognition for
-                        adaptability and commitment to excellence.</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </motion.div>
-
-           
+          <div className="p-6 sm:p-8">
+            <p className="text-muted-foreground leading-relaxed">
+              {experience.summary}
+            </p>
+            <ul className="mt-6 space-y-4">
+              {experience.bullets.map((bullet) => (
+                <li
+                  key={bullet}
+                  className="flex gap-3 text-sm sm:text-[15px] leading-relaxed"
+                >
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-          <div className="relative">
-          <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-              className="mt-16"
-            >
-              <Card className="border-primary/20">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-xl mb-4">Technical Skills</h3>
-                  <div className="space-y-6">
-                    <div>
-                      <h4 className="text-sm font-medium text-muted-foreground mb-2">Client-Side Technologies</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {skills.clientSide.map((skill) => (
-                          <Badge key={skill} variant="secondary" className="bg-primary/10 hover:bg-primary/20">
-                            {skill}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-medium text-muted-foreground mb-2">Server-Side Technologies</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {skills.serverSide.map((skill) => (
-                          <Badge key={skill} variant="secondary" className="bg-primary/10 hover:bg-primary/20">
-                            {skill}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-medium text-muted-foreground mb-2">Development & Operations</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {skills.devOps.map((skill) => (
-                          <Badge key={skill} variant="secondary" className="bg-primary/10 hover:bg-primary/20">
-                            {skill}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
+        </div>
+      </motion.article>
+    </Section>
   );
 }

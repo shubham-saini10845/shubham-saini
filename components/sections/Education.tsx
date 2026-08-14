@@ -1,41 +1,40 @@
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
+import { GraduationCap } from "lucide-react";
+import { Section, SectionHeading } from "@/components/layout/Section";
+import { education } from "@/lib/site";
 
 export default function Education() {
   return (
-    <section className="py-16 sm:py-24 bg-muted/50">
-      <div className="px-4 md:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-3xl font-bold tracking-tighter text-center mb-12">Education</h2>
-          <div className="grid gap-6 md:grid-cols-2">
-            <Card>
-              <CardHeader>
-                <CardTitle>Master of Computer Applications (MCA)</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">Dr. A.P.J. Abdul Kalam Technical University</p>
-                <p className="text-sm text-muted-foreground">2020 - 2022 | Meerut, India</p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Bachelor of Computer Applications (BCA)</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">Panipat Institute of Engineering and Technology</p>
-                <p className="text-sm text-muted-foreground">2017 - 2020 | Panipat, India</p>
-              </CardContent>
-            </Card>
-          </div>
-        </motion.div>
+    <Section id="education">
+      <SectionHeading
+        index="05"
+        eyebrow="Education"
+        title="Computer applications, start to finish."
+      />
+
+      <div className="grid gap-4 md:grid-cols-2">
+        {education.map((item, index) => (
+          <motion.article
+            key={item.degree}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: index * 0.08 }}
+            className="rounded-3xl border border-border bg-card p-6 sm:p-8"
+          >
+            <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+              <GraduationCap className="h-5 w-5" />
+            </div>
+            <h3 className="font-display text-xl font-semibold">{item.degree}</h3>
+            <p className="mt-2 text-foreground">{item.school}</p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              {item.period} · {item.location}
+            </p>
+          </motion.article>
+        ))}
       </div>
-    </section>
+    </Section>
   );
 }

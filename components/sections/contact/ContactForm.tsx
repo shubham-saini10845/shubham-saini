@@ -1,31 +1,32 @@
 "use client";
 
-import { useState } from 'react';
+import { useState } from "react";
+import { Send, Loader2 } from "lucide-react";
+import emailjs from "@emailjs/browser";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Send, Loader2 } from "lucide-react";
-import emailjs from '@emailjs/browser';
-import { emailjsConfig } from '@/lib/emailjs';
-import { motion } from "framer-motion";
-import { TOAST_STYLE_CONFIG_INFO } from '@/lib/utils';
+import { emailjsConfig } from "@/lib/emailjs";
+import { site } from "@/lib/site";
+import { TOAST_STYLE_CONFIG_INFO } from "@/lib/utils";
 
 export default function ContactForm() {
   const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
+    name: "",
+    email: "",
+    message: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -41,22 +42,22 @@ export default function ContactForm() {
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
-          to_name: 'Shubham Saini',
+          to_name: site.name,
         },
         emailjsConfig.publicKey
       );
 
       toast({
-        title: "Message sent successfully!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
-        style:TOAST_STYLE_CONFIG_INFO
+        title: "Message sent.",
+        description: "Thanks for reaching out — I’ll reply shortly.",
+        style: TOAST_STYLE_CONFIG_INFO,
       });
 
-      setFormData({ name: '', email: '', message: '' });
+      setFormData({ name: "", email: "", message: "" });
     } catch (error) {
       toast({
-        title: "Error sending message",
-        description: "Please try again later or contact me directly via email.",
+        title: "Couldn’t send the message",
+        description: `Try again, or email me directly at ${site.email}.`,
         variant: "destructive",
       });
     } finally {
@@ -65,70 +66,65 @@ export default function ContactForm() {
   };
 
   return (
-    <Card className="h-full  max-w-sm  sm:max-w-full">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <Send className="h-5 w-5 text-primary" />
-          Send a Message
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <motion.form 
-          onSubmit={handleSubmit} 
-          className="space-y-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+    <div className="rounded-3xl border border-border bg-card p-6 sm:p-8">
+      <h3 className="font-display text-xl font-semibold">Send a message</h3>
+      <p className="mt-1 text-sm text-muted-foreground">
+        Recruiters: include the role, location, and a link to the JD if you have
+        one.
+      </p>
+      <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+        <label className="block space-y-1.5">
+          <span className="text-sm font-medium">Name</span>
+          <Input
+            placeholder="Your name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            className="h-11 rounded-xl bg-background"
+          />
+        </label>
+        <label className="block space-y-1.5">
+          <span className="text-sm font-medium">Email</span>
+          <Input
+            type="email"
+            placeholder="you@company.com"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            className="h-11 rounded-xl bg-background"
+          />
+        </label>
+        <label className="block space-y-1.5">
+          <span className="text-sm font-medium">Message</span>
+          <Textarea
+            placeholder="Role, team, and anything I should know."
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            className="min-h-[150px] rounded-xl bg-background"
+            required
+          />
+        </label>
+        <Button
+          className="w-full rounded-full"
+          type="submit"
+          disabled={isLoading}
         >
-          <div className="space-y-2">
-            <Input
-              placeholder="Your Name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="bg-background"
-            />
-          </div>
-          <div className="space-y-2">
-            <Input
-              type="email"
-              placeholder="Your Email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="bg-background"
-            />
-          </div>
-          <div className="space-y-2">
-            <Textarea
-              placeholder="Your Message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              className="min-h-[150px] bg-background"
-              required
-            />
-          </div>
-          <Button 
-            className="w-full gap-2 !mt-10" 
-            type="submit" 
-            disabled={isLoading}
-          >
-            {isLoading ? (
-              <>
-                <Loader2 className="h-4 w-4 animate-spin" />
-                Sending...
-              </>
-            ) : (
-              <>
-                <Send className="h-4 w-4" />
-                Send Message
-              </>
-            )}
-          </Button>
-        </motion.form>
-      </CardContent>
-    </Card>)
+          {isLoading ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Sending...
+            </>
+          ) : (
+            <>
+              <Send className="mr-2 h-4 w-4" />
+              Send message
+            </>
+          )}
+        </Button>
+      </form>
+    </div>
+  );
 }

@@ -1,13 +1,55 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Syne, DM_Sans } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { site } from "@/lib/site";
 
-const inter = Inter({ subsets: ["latin"] });
+const syne = Syne({
+  subsets: ["latin"],
+  variable: "--font-syne",
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
+  display: "swap",
+});
+
+const description =
+  "Lead Full Stack Developer with 6 years at Cloud Analogy — promoted from Assistant to Lead in January 2026. Shipping production web apps, Chrome extensions, and AI-powered platforms with TypeScript, React, Next.js, Node.js, and AWS.";
 
 export const metadata: Metadata = {
-  title: "Shubham Saini - Full Stack Developer",
-  description: `Welcome to Shubham Saini's portfolio website. Explore my projects, skills, and achievements in web development, design, and technology!`,
+  title: `${site.name} — ${site.role}`,
+  description,
+  keywords: [
+    "Shubham Saini",
+    "Lead Full Stack Developer",
+    "Full Stack Developer",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Node.js",
+    "AWS",
+    "Chrome Extension",
+    "Portfolio",
+  ],
+  authors: [{ name: site.name }],
+  openGraph: {
+    title: `${site.name} — ${site.role}`,
+    description,
+    type: "website",
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} — ${site.role}`,
+    description,
+  },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -17,38 +59,40 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-        <meta
-          property="og:title"
-          content="Shubham Saini - Full Stack Developer"
+      <body
+        className={`${dmSans.variable} ${syne.variable} font-sans min-h-screen`}
+      >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: site.name,
+              jobTitle: site.role,
+              email: site.email,
+              telephone: site.phone,
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Shamli",
+                addressRegion: "Uttar Pradesh",
+                addressCountry: "IN",
+              },
+              sameAs: [site.github, site.linkedin],
+              knowsAbout: [
+                "TypeScript",
+                "React",
+                "Next.js",
+                "Node.js",
+                "AWS",
+                "Full Stack Development",
+              ],
+            }),
+          }}
         />
-        <meta
-          property="og:description"
-          content="Explore Shubham's work in web development, design, and technology. Discover projects, skills, and achievements."
-        />
-        <meta property="og:image" content="/favicon.ico" />
-        <meta property="og:url" content="https://www.yourportfolio.com" />
-        <meta property="og:type" content="website" />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-
-        <link rel="icon" href="/favicon.ico" sizes="96x96" />
-        <link
-          rel="apple-touch-icon"
-          href="/apple-touch-icon.png"
-          type="image/png"
-          sizes="48x48"
-        />
-      </head>
-      <body className={inter.className}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >

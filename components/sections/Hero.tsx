@@ -1,159 +1,194 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail, MapPin } from "lucide-react";
-import { motion } from "framer-motion";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Container } from "@/components/layout/Section";
+import { hero, site, stats } from "@/lib/site";
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
+const fade = {
+  hidden: { opacity: 0, y: 18 },
+  visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.5
-    }
-  }
+    transition: { delay: 0.08 * i, duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+  }),
 };
 
-const gradientTextStyle = "bg-gradient-to-r from-primary to-purple-600 dark:from-blue-400 dark:to-purple-400 text-transparent bg-clip-text";
-export const  GIT_HUB='https://github.com/shubham-saini10845'
 export default function Hero() {
-
-  const scrollToView=(type:'scroll'|'Git')=>{
-    
-    switch (type) {
-      case 'scroll':
-        const element=document.getElementById('contact-me-section');
-        element?.scrollIntoView({behavior:'smooth'})
-        break;
-      case 'Git':
-        window.open(GIT_HUB,'_blank')
-        break;
-      default:
-        break;
-    }
-
-  }
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-16 sm:py-24">
-      <div className="absolute inset-0 bg-grid-black/[0.02] dark:bg-grid-white/[0.02]" />
-      <div className="container px-4 md:px-6 relative">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="flex flex-col-reverse md:flex-row items-center gap-8 md:gap-12"
-        >
-          {/* Text Content */}
-          <motion.div 
-            variants={itemVariants}
-            className="flex-1 text-center md:text-left space-y-6"
-          >
+    <section id="top" className="relative overflow-hidden pt-28 sm:pt-32">
+      <div className="pointer-events-none absolute inset-0 grid-fade" />
+      <div className="pointer-events-none absolute -left-32 top-10 h-80 w-80 rounded-full bg-primary/15 blur-3xl" />
+      <div className="pointer-events-none absolute right-0 top-40 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
+
+      <Container className="relative">
+        <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+          <div>
             <motion.div
-              variants={itemVariants}
-              className="inline-block rounded-full bg-muted/50 px-6 py-2 text-sm text-muted-foreground backdrop-blur-sm"
+              custom={0}
+              variants={fade}
+              initial="hidden"
+              animate="visible"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-3 py-1.5 text-xs text-muted-foreground backdrop-blur"
             >
-              Welcome to my portfolio
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-pulse-dot rounded-full bg-primary opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+              </span>
+              {hero.eyebrow}
             </motion.div>
 
             <motion.h1
-              variants={itemVariants}
-              className={`text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl ${gradientTextStyle}`}
+              custom={1}
+              variants={fade}
+              initial="hidden"
+              animate="visible"
+              className="mt-6 font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl"
             >
-              SHUBHAM SAINI
+              {site.name}
             </motion.h1>
 
-            <motion.div
-              variants={itemVariants}
-              className="relative inline-block"
+            <motion.p
+              custom={2}
+              variants={fade}
+              initial="hidden"
+              animate="visible"
+              className="mt-3 font-display text-xl text-primary sm:text-2xl"
             >
-              <span className="text-2xl md:text-3xl font-semibold">
-                FULL STACK DEVELOPER
-              </span>
-              <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-primary/50 to-purple-600/50 rounded-full" />
-            </motion.div>
+              {site.role}
+            </motion.p>
 
             <motion.p
-              variants={itemVariants}
-              className="max-w-[700px] text-muted-foreground md:text-lg dark:text-gray-400 leading-relaxed"
+              custom={3}
+              variants={fade}
+              initial="hidden"
+              animate="visible"
+              className="mt-5 max-w-xl font-display text-2xl font-semibold leading-snug tracking-tight text-foreground/90 sm:text-[1.7rem] text-balance"
             >
-              Full Stack Developer with 5.8 years of experience in front-end and back-end development.
-              Proficient in building, maintaining, and deploying scalable web applications.
+              {hero.headline}
+            </motion.p>
+
+            <motion.p
+              custom={4}
+              variants={fade}
+              initial="hidden"
+              animate="visible"
+              className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
+            >
+              {hero.summary}
             </motion.p>
 
             <motion.div
-              variants={itemVariants}
-              className="flex flex-wrap justify-center md:justify-start gap-4 mt-8"
+              custom={5}
+              variants={fade}
+              initial="hidden"
+              animate="visible"
+              className="mt-8 flex flex-wrap items-center gap-3"
             >
-              <Button variant="default" className="gap-2 group" onClick={()=>scrollToView('scroll')}>
-                <Mail className="h-4 w-4 group-hover:scale-110 transition-transform" />
-                <span>Contact Me</span>
-              </Button>
-              <Button variant="outline" className="gap-2 group" asChild>
-                <a href="https://www.linkedin.com/in/shubhamsainideveloper" target="_blank" rel="noopener noreferrer">
-                  <Linkedin className="h-4 w-4 group-hover:scale-110 transition-transform" />
-                  <span>LinkedIn</span>
+              <Button asChild className="rounded-full px-5">
+                <a href="#contact">
+                  <Mail className="mr-2 h-4 w-4" />
+                  Contact me
                 </a>
               </Button>
-              <Button variant="outline" className="gap-2 group" onClick={()=>scrollToView('Git')}>
-                <Github className="h-4 w-4 group-hover:scale-110 transition-transform" />
-                <span>GitHub</span>
+              <Button asChild variant="outline" className="rounded-full px-5">
+                <a href="#work">View work</a>
               </Button>
-              <Button variant="outline" className="gap-2 group">
-                <MapPin className="h-4 w-4 group-hover:scale-110 transition-transform" />
-                <span>Shamli, UP India</span>
+              <Button asChild variant="ghost" className="rounded-full px-3">
+                <a
+                  href={site.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Linkedin className="mr-2 h-4 w-4" />
+                  LinkedIn
+                </a>
+              </Button>
+              <Button asChild variant="ghost" className="rounded-full px-3">
+                <a href={site.github} target="_blank" rel="noopener noreferrer">
+                  <Github className="mr-2 h-4 w-4" />
+                  GitHub
+                </a>
               </Button>
             </motion.div>
-          </motion.div>
 
-          {/* Profile Image */}
+            <motion.div
+              custom={6}
+              variants={fade}
+              initial="hidden"
+              animate="visible"
+              className="mt-8 flex flex-wrap gap-2"
+            >
+              {hero.stack.map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full border border-border bg-card/60 px-3 py-1 text-xs text-muted-foreground"
+                >
+                  {item}
+                </span>
+              ))}
+            </motion.div>
+          </div>
+
           <motion.div
-            variants={itemVariants}
-            className="relative w-64 h-64 md:w-96 md:h-96"
+            custom={3}
+            variants={fade}
+            initial="hidden"
+            animate="visible"
+            className="relative mx-auto w-full max-w-sm lg:max-w-none"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-purple-600/20 rounded-full blur-3xl" />
-            <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-primary/20 shadow-xl">
-              <Image
-                src="/images/profile.png"
-                alt="Shubham Saini"
-                fill
-                className="object-cover"
-                priority
-              />
+            <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-primary/30 via-transparent to-primary/10 blur-2xl" />
+            <div className="relative overflow-hidden rounded-[1.75rem] border border-border/80 bg-card surface-glow">
+              <div className="relative aspect-[4/5]">
+                <Image
+                  src="/images/profile.png"
+                  alt={`${site.name}, ${site.role}`}
+                  fill
+                  priority
+                  className="object-cover object-top"
+                />
+              </div>
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background/90 via-background/30 to-transparent p-5">
+                <p className="font-display text-lg font-semibold">{site.name}</p>
+                <p className="text-sm text-muted-foreground">
+                  {site.location}
+                </p>
+              </div>
             </div>
           </motion.div>
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={itemVariants}
-          className="absolute bottom-14 left-1/2 -translate-x-1/2"
+        <motion.dl
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.45, duration: 0.5 }}
+          className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-4"
         >
-          <motion.div
-            animate={{
-              y: [0, 10, 0],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="text-muted-foreground md:block hidden"
-          >
-            ↓ Scroll to explore
-          </motion.div>
-        </motion.div>
-      </div>
+          {stats.map((stat) => (
+            <div
+              key={stat.label}
+              className="bg-card px-4 py-5 sm:px-6 sm:py-6"
+            >
+              <dt className="text-xs uppercase tracking-wider text-muted-foreground">
+                {stat.label}
+              </dt>
+              <dd className="mt-2 font-display text-2xl font-semibold sm:text-3xl">
+                {stat.value}
+              </dd>
+            </div>
+          ))}
+        </motion.dl>
+
+        <a
+          href="#about"
+          className="mt-10 mb-4 hidden items-center justify-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground md:flex"
+        >
+          <ArrowDown className="h-4 w-4" />
+          Scroll
+        </a>
+      </Container>
     </section>
   );
 }
